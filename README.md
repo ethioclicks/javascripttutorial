@@ -1,4 +1,4 @@
 # javascripttutorial
 # Final output
 
-<img src="https://raw.githubusercontent.com/sebagadisk/JSPproject/main/Screenshots/Registeration%20Form.PNG" width="850" alt="CreateAccount UI" />
+<img src="https://github.com/ethioclicks/javascripttutorial/blob/main/finaloutput/image.png" width="850" alt="CreateAccount UI" />
