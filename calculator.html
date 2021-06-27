@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./header.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        button{
+            margin-right: 2px;
+        }
+    </style>
+</head>
+<body onload="loadhistory()" >
+    <div id="header_links" >
+        <ul>
+            <li><a href="index.html">Home</a> </li>
+            <li><a href="post.html">Post a Blog</a></li>
+            <li><a href="about.html">About us</a></li>
+        </ul>
+    </div>
+    <!-- this is about page -->
+    <div class=".container-fluid">
+
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row">
+                    <label for="result" class="col-sm-2 col-form-lable">Result:</label>
+                    <div class="col-sm-9">
+                        <input type="text"  id="result" disabled>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="operand1" class="col-sm-2 col-form-lable">Operand1:</label>
+                    <div class="col-sm-9">
+                        <input type="text"  id="operand1">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="operand2" class="col-sm-2 col-form-lable">Operand2:</label>
+                    <div class="col-sm-9">
+                        <input type="text"  id="operand2">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="operation" class="col-sm-2 col-form-lable">Operation:</label>
+                    <div class="col-sm-9" >
+                        <button type="button" class="btn btn-dark" onclick="calculate('add')" >+</button:type>
+                        <button type="button" class="btn btn-dark" onclick="calculate('sub')">-</button:type>
+                        <button type="button" class="btn btn-dark" onclick="calculate('mul')">x</button:type>
+                        <button type="button" class="btn btn-dark" onclick="calculate('div')">/</button:type>
+                        <button type="button" class="btn btn-dark" onclick="calculate('mod')">%</button:type>
+                    </div>
+                </div>
+            </div>
+            <div id="history" class="col-4">
+                history
+            </div>
+        </div>
+        
+
+    </div>
+    
+
+</body>
+</html>
+<script>
+
+    const history=[];
+
+    var data=''
+    // "<tr><td>3</td><td>4</td><td>+</td><td>7</td><tr>"
+    function calculate(type){
+        
+        var operand1 = Number(document.getElementById("operand1").value);
+        var operand2 = Number(document.getElementById("operand2").value);
+        var result=''
+        var operation=''
+        
+        if(type=="add") {
+            result= operand1+operand2;
+            operation="+";
+            document.getElementById("result").value = result;
+        } else if (type=="sub") {
+            result=operand1-operand2;
+            document.getElementById("result").value = result;
+            operation="-";
+        } else if (type=="mul") {
+            result=operand1*operand2;
+            document.getElementById("result").value = result;
+            operation="x";
+        } else if (type=="div") {
+            result=operand1/operand2;
+            document.getElementById("result").value = result;
+            operation="/";
+        } else{
+            result=operand1%operand2;
+            document.getElementById("result").value = result;
+            operation="%";
+        }
+
+        // debugger
+        history.push({op1:operand1, op2:operand2, opr:operation, rs:result});
+        loadhistory()
+
+        //{op1:2, op2:3, opr:'+', rs:7}
+        
+    }
+
+    function loadhistory() {
+        // history.forEach(element => {
+        //    console.log(element);
+        // });
+        debugger
+        data=''
+        history.forEach(element => {
+            data = "<tr><td>"+element.op1+"</td><td>"+element.op2+"</td><td>"+element.opr+"</td><td>"+element.rs+"</td><tr>"+data;
+        });
+
+        document.getElementById('history').innerHTML=
+        "<table>"
+        +"<tr><th>Operand1</th><th>Operand2</th><th>Operation</th><th>Reulst</th></tr>"
+        +data
+        +"</table>"
+
+
+
+
+
+    }
+
+    
+
+    
+
+</script>

@@ -1,0 +1,36 @@
+body{
+    /* border: 1px solid green;  */
+    width: 80%;
+    margin: auto;
+}
+
+
+#blog_body{
+    /* border: 1px solid springgreen; */
+   
+}
+.blog{
+    /* border: 1px solid springgreen; */
+    width: 45%;
+    margin: 1%;
+    float: left;
+    padding: 10px;
+}
+
+.blog_images{
+    width: 100%;
+    max-height: 400px;
+    
+}
+.blog_content{
+    text-align: justify;
+    /* margin: 10px; */
+}
+
+@media screen and (max-width: 600px) {
+    .blog{
+        width: 100%;
+        float: none;
+    }
+    
+}
